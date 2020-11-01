@@ -1,51 +1,51 @@
 # Classes:
 
   SistemaProdutividadeAcademica;
-  
+    
     # Funções: 
     
       Main;
       
-      M_Inicial;
+      M_Inicial: Função de apoio para "main";
       
   Colaborador;
   
     # Funções: 
     
-      M_Inicial;
+      M_Inicial: Função de apoio para "ed_c";
       
-      add_c;
+      add_c: Adição de um Colaborador;
       
-      imp_c;
+      imp_c: Impressão dos Dados de um Colaborador;
       
-      ed_c;
+      ed_c: Alteração dos Dados de um Colaborador;
       
-      rem_c;
+      rem_c: Remoção de um Colaborador;
       
   Projeto;
   
     # Funções: 
     
-      M_Inicial;
+      M_Inicial: Função de apoio para "ed_p";
       
-      add_p;
+      add_p: Adição de um Projeto;
       
-      imp_p;
+      imp_p: Impressão dos Dados de um Projeto;
       
-      ed_p;
+      ed_p: Alteração dos Dados de um Projeto;
       
-      rem_p;
+      rem_p: Remoção de um Projeto;
   
   ProduçãoAcademica;
   
     # Funções: 
     
-      M_Inicial;
+      M_Inicial: Função de apoio para "ed_pa";
       
-      add_pa;
+      add_pa: Adição de uma Produção Academica;
       
-      imp_pa;
+      imp_pa: Impressão dos Dados de uma Produção Academica;
       
-      ed_pa;
+      ed_pa: Alteração dos Dados de uma Produção Academica;
       
-      rem_pa; 
+      rem_pa: Remoção de uma Produção Academica; 
