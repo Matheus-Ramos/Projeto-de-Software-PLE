@@ -2,7 +2,7 @@
 
   SistemaProdutividadeAcademica;
   
-    # Funções: 
+   # Funções: 
     
       Main;
       
@@ -10,7 +10,7 @@
       
   Colaborador;
   
-    # Funções: 
+   # Funções: 
     
       M_Inicial;
       
@@ -24,7 +24,7 @@
       
   Projeto;
   
-    # Funções: 
+   # Funções: 
     
       M_Inicial;
       
@@ -38,7 +38,7 @@
   
   ProduçãoAcademica;
   
-    # Funções: 
+   # Funções: 
     
       M_Inicial;
       
