@@ -1,6 +1,6 @@
 # Classes:
 
-  SistemaProdutividadeAcademica;
-  Colaborador;
-  Projeto;
-  ProduçãoAcademica
+  SistemaProdutividadeAcademica;\n
+  Colaborador;\n
+  Projeto;\n
+  ProduçãoAcademica;\n
