@@ -3,9 +3,7 @@ package sistemaprodutividadeacademica;
 import java.util.Scanner;
 
 /*falta:
-* Diferenciar os colaboradores(alunos de graduação, alunos
-de mestrado, alunos de doutorado, professores e pesquisadores);
-* Adiconar uma indentificação para os colaboradores;
+* formataçoes de estetica em imp_c;
 */
 
 public class Colaborador {
@@ -15,8 +13,17 @@ public class Colaborador {
     private String endereco;
     private int telefone;
     private int cpf;
+    private int id;
     
     Scanner input = new Scanner(System.in);
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
     
     public void setNome(String nome){
         this.nome = nome;
@@ -60,20 +67,24 @@ public class Colaborador {
     
     public void imp_c(){//Imprimir os dados de um colaborador
         
-        if(getNome() != null){
+        if(getId() != -1){
+            System.out.println("Identificação: " + getId());
             System.out.println("Nome: " + getNome());
             System.out.println("Email: " + getEmail());
             System.out.println("Telefone: " + getTelefone());
             System.out.println("CPF: " + getCpf());
             System.out.println("Endereço: " + getEndereco());
+        }else{
+            System.out.println("Funcionario não existente");
         }
     }
     
-    public void add_c(){//Adição de um colaborador
+    public void add_c(int ficha){//Adição de um colaborador
         
         int aux1;
         String aux2;
         
+        setId(ficha);
         System.out.println("Informe o Nome Completo: ");
         aux2 = input.nextLine();
         setNome(aux2);
@@ -91,7 +102,6 @@ public class Colaborador {
         System.out.println("Informe o Endereço: ");
         aux2 = input.nextLine();
         setEndereco(aux2);
-        System.out.println();
     }
     
     public void rem_c(){//Remoção de um colaborador
@@ -99,6 +109,7 @@ public class Colaborador {
         int aux1 = -1;
         String aux2 = null;
 
+        setId(aux1);
         setNome(aux2);
         setEmail(aux2);
         setTelefone(aux1);
@@ -106,69 +117,54 @@ public class Colaborador {
         setEndereco(aux2);
     }
     
-    public void M_Inicial(){//função de apoio
+    public void M_Inicial(){//função de apoio para ed_c()
         
         System.out.println("Informe o campo que deseja alterar:");
         System.out.println("Nome Completo(1);\n"
                 + "Email(2);\n"
                 + "Telefone(3);\n"
                 + "CPF(4);\n"
-                + "Endereço(5);\n"
-                + "Sair(6).");
+                + "Endereço(5);\n");
     }
     
-    public void ed_c(){//Alterar detalhes de um colaborador
+    public void ed_c(int opcao){//Alterar detalhes de um colaborador
         
-        int opcao = 1;
         int aux1;
         String aux2;
         
-        while(opcao != 6){
-            
-            M_Inicial();
-            opcao = input.nextInt();
-            switch(opcao){
-                case 1:
-                    System.out.println("Informe o Novo Nome Completo: ");
-                    aux2 = input.nextLine();
-                    setNome(aux2);
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println("Informe o Novo Email: ");
-                    aux2 = input.nextLine();
-                    setEmail(aux2);
-                    System.out.println();
-                    break;
-                case 3:
-                    System.out.println("Informe o Novo Telefone: ");
-                    aux1 = input.nextInt();
-                    setTelefone(aux1);
-                    input.nextLine();
-                    System.out.println();
-                    break;
-                case 4:
-                    System.out.println("Informe o Novo CPF: ");
-                    aux1 = input.nextInt();
-                    setCpf(aux1);
-                    input.nextLine();
-                    System.out.println();
-                    break;
-                case 5:
-                    System.out.println("Informe o Novo Endereço: ");
-                    aux2 = input.nextLine();
-                    setEndereco(aux2);
-                    System.out.println();
-                    break;
-                case 6:
-                    System.out.println("Modificações Salvas!!");
-                    System.out.println();
-                    break;
-                default:
-                    System.out.println("Opção Invalida!!!");
-                    System.out.println("Digite Novamente");
-                    System.out.println();
-            }
+        switch(opcao){
+            case 1:
+                System.out.println("Informe o Novo Nome Completo: ");
+                aux2 = input.nextLine();
+                setNome(aux2);
+                System.out.println();
+                break;
+            case 2:
+                System.out.println("Informe o Novo Email: ");
+                aux2 = input.nextLine();
+                setEmail(aux2);
+                System.out.println();
+                break;
+            case 3:
+                System.out.println("Informe o Novo Telefone: ");
+                aux1 = input.nextInt();
+                setTelefone(aux1);
+                input.nextLine();
+                System.out.println();
+                break;
+            case 4:
+                System.out.println("Informe o Novo CPF: ");
+                aux1 = input.nextInt();
+                setCpf(aux1);
+                input.nextLine();
+                System.out.println();
+                break;
+            case 5:
+                System.out.println("Informe o Novo Endereço: ");
+                aux2 = input.nextLine();
+                setEndereco(aux2);
+                System.out.println();
+                break;     
         }
     }
 }

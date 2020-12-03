@@ -1,15 +1,19 @@
 package sistemaprodutividadeacademica;
 
 import java.util.Scanner;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 /*falta:
-* Status;
+* ajeitar gerenciarStatus e checaVariaveis;
 * Datas;
 * Participantes;
+* formataçoes de estetica em imp_c;
 */
 
 public class Projeto {
     
+    private int id;
     private String status;
     private String titulo;
     private String dataInicio;
@@ -21,6 +25,14 @@ public class Projeto {
     private String[] participantes;
     
     Scanner input = new Scanner(System.in);
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
     
     public void setStatus(String status){
         this.status = status;
@@ -96,8 +108,9 @@ public class Projeto {
     
     public void imp_p(){//Imprimir os dados de um projeto
         
-        if(getTitulo() != null){
-            //Status
+        if(getId() != -1){
+            System.out.println("Identificação: " + getId());
+            System.out.println("Status: " + getStatus());
             System.out.println("Titulo: " + getTitulo());
             System.out.println("Objetivo: " + getObjetivo());
             System.out.println("Descrição: " + getDescricao());
@@ -106,15 +119,18 @@ public class Projeto {
             System.out.println("Agencia Financiadora: " + getAgenciaFinanciadora());
             System.out.println("Valor Financiado: " + getValorFinanciado());
             //Participantes
+        }else{
+            System.out.println("Projeto não existente");
         }
     }
     
-    public void add_p(){//Adição de um projeto
+    public void add_p(int ficha){//Adição de um projeto
         
         double aux1;
         String aux2;
         
-        //Status
+        setId(ficha);
+        setStatus("Em elaboração");
         System.out.println("Informe o Titulo: ");
         aux2 = input.nextLine();
         setTitulo(aux2);
@@ -141,8 +157,10 @@ public class Projeto {
         
         double aux1 = -1.0;
         String aux2 = null;
+        int aux3 = -1;
 
-        //Status
+        setId(aux3);
+        setStatus(aux2);
         setTitulo(aux2);
         setObjetivo(aux2);
         setDescricao(aux2);
@@ -153,7 +171,55 @@ public class Projeto {
         //Participantes
     }
     
-    public void M_Inicial(){//função de apoio
+    public boolean checaVariaveis(){//função de apoio para gerenciarStatus()
+        
+        int soma = 0;
+        if ((getTitulo() != " ") && (getDescricao() != " ") && (getObjetivo() != " ")){
+            soma++;
+        }
+        /*if ((getDataInicio()) && (getDataTermino())){
+            soma++;
+        }*/
+        if ((getAgenciaFinanciadora() != " ") && (getValorFinanciado() != 0.0)){
+            soma++;
+        }
+        /*if (getParticipantes()){
+            soma++;
+        }*/
+        if (soma == 4){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public void gerenciarStatus(){//Altera o status do projeto
+        
+        int aux;
+        if (getStatus() == "Em elaboração"){
+            System.out.println("Deseja Iniciar o projeto? sim(1) ou não(2): ");
+            aux = input.nextInt();
+            input.nextLine();
+            if ((aux == 1) && checaVariaveis()){
+                setStatus("Em andamento");
+            }else{
+                System.out.println("Não foi possivel alterar o status.");
+                System.out.println("Alguma(s) das variaveis não foi preenchida corretamente.");
+            }
+        }else if (getStatus() == "Em andamento"){
+            System.out.println("Deseja Finalizar o projeto? sim(1) ou não(2): ");
+            aux = input.nextInt();
+            input.nextLine();
+            if ((aux == 1) && true){//falta relacionar com PA
+                setStatus("Concluído");
+            }else{
+                System.out.println("Não foi possivel alterar o status.");
+                System.out.println("O projeto não possui publicações associadas.");
+            }
+        }   
+    }
+    
+    public void M_Inicial(){//função de apoio para ed_p()
         
         System.out.println("Informe o campo que deseja alterar:");
         System.out.println("Status(1);\n"
@@ -178,9 +244,10 @@ public class Projeto {
             
             M_Inicial();
             opcao = input.nextInt();
+            input.nextLine();
             switch(opcao){
                 case 1:
-                    //Status
+                    gerenciarStatus();
                     break;
                 case 2:
                     System.out.println("Informe o Novo Titulo: ");

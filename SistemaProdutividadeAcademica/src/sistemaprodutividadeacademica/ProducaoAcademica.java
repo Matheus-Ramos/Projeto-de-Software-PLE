@@ -4,20 +4,27 @@ import java.util.Scanner;
 
 /*Falta:
 //Publicação
-    private String[] autores;
-    private String nomeConferencia; 
+     
 //Orientação
-    private String Professor;
-    private String[] orientandos;
+    
 */
 
 public class ProducaoAcademica {
     
+    private int id;
     private String titulo;
     private int anoEvento;
     private String projetoAssociado;
     
     Scanner input = new Scanner(System.in);
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
     
     public void setTitulo(String titulo){
         this.titulo = titulo;
@@ -45,18 +52,22 @@ public class ProducaoAcademica {
     
     public void imp_pa(){//Imprimir os dados de uma produção academica
         
-        if(getTitulo() != null){
+        if(getId() != -1){
+            System.out.println("Identificação: " + getId());
             System.out.println("Titulo: " + getTitulo());
             System.out.println("Ano do Evento: " + getAnoEvento());
             System.out.println("Projeto Associado: " + getProjetoAssociado());
+        }else{
+            System.out.println("Produção Academica não existente");
         }
     }
     
-    public void add_pa(){//Adição de uma produção academica
+    public void add_pa(int ficha){//Adição de uma produção academica
         
         int aux1;
         String aux2;
         
+        setId(ficha);
         System.out.println("Informe o Titulo: ");
         aux2 = input.nextLine();
         setTitulo(aux2);
@@ -75,12 +86,13 @@ public class ProducaoAcademica {
         int aux1 = -1;
         String aux2 = null;
 
+        setId(aux1);
         setTitulo(aux2);
         setProjetoAssociado(aux2);
         setAnoEvento(aux1);
     }
     
-    public void M_Inicial(){//função de apoio
+    public void M_Inicial(){//função de apoio para ed_pa()
         
         System.out.println("Informe o campo que deseja alterar:");
         System.out.println("Titulo(1);\n"
