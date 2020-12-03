@@ -8,7 +8,13 @@
       
       M_Inicial: Função de apoio para "main";
       
-  Colaborador;
+      ConsultaColaborador: Função para manipular a classe colaborador e suas subclasses;
+      
+      ConsultaProjeto: Função para manipular a classe projeto e suas subclasses
+      
+      ConsultaProducaoAcademica: Função para manipular a classe ProducaoAcademica e suas subclasses
+      
+  Colaborador; (Super classe)
   
     # Funções: 
     
@@ -21,6 +27,34 @@
       ed_c: Alteração dos Dados de um Colaborador;
       
       rem_c: Remoção de um Colaborador;
+      
+   Estudante; (Sub classe)
+  
+    # Funções Sobrescritas: 
+    
+      M_Inicial: Função de apoio para "ed_c";
+      
+      add_c: Adição de um Colaborador do tipo Estudante;
+      
+      imp_c: Impressão dos Dados de um Colaborador do tipo Estudante;
+      
+      ed_c: Alteração dos Dados de um Colaborador do tipo Estudante;
+      
+      rem_c: Remoção de um Colaborador do tipo Estudante;
+      
+   ProfessorPesquisador; (Sub classe)
+  
+    # Funções Sobrescritas: 
+    
+      M_Inicial: Função de apoio para "ed_c";
+      
+      add_c: Adição de um Colaborador do tipo Professor;
+      
+      imp_c: Impressão dos Dados de um Colaborador do tipo Professor;
+      
+      ed_c: Alteração dos Dados de um Colaborador do tipo Professor;
+      
+      rem_c: Remoção de um Colaborador do tipo Professor;       
       
   Projeto;
   
@@ -35,8 +69,12 @@
       ed_p: Alteração dos Dados de um Projeto;
       
       rem_p: Remoção de um Projeto;
+      
+      checaVariaveis: Função de apoio para gerenciarStatus;
+      
+      gerenciarStatus: Altera o status do projeto;
   
-  ProduçãoAcademica;
+  ProduçãoAcademica; (Super classe)
   
     # Funções: 
     
@@ -49,3 +87,7 @@
       ed_pa: Alteração dos Dados de uma Produção Academica;
       
       rem_pa: Remoção de uma Produção Academica; 
+      
+  Publicacao; (Sub classe) 
+  
+  Orientacao; (Sub classe) 
