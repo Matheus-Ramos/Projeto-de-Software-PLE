@@ -88,6 +88,10 @@
       
       rem_pa: Remoção de uma Produção Academica; 
       
-  Publicacao; (Sub classe) 
+  Publicacao; (Sub classe)
   
-  Orientacao; (Sub classe) 
+    # Funções: 
+  
+  Orientacao; (Sub classe)
+  
+    # Funções: 
