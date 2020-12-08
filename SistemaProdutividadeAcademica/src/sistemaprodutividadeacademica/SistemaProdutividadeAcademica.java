@@ -94,9 +94,7 @@ public class SistemaProdutividadeAcademica {
         }
     }
     
-    public static void ConsultaProducaoAcademica(int opcao) {//função para manipular a classe ProducaoAcademica e suas subclasses
-        
-        ProducaoAcademica pdac[] = new ProducaoAcademica[5]; 
+    public static void ConsultaProducaoAcademica(int opcao, ProducaoAcademica pdac[], int tam) {//função para manipular a classe ProducaoAcademica e suas subclasses
         
         switch(opcao){
             case 9://Adicionar uma Produção Academica
@@ -108,7 +106,7 @@ public class SistemaProdutividadeAcademica {
                             + "alterar os dados: ");
                 aux = input.nextInt();
                 input.nextLine();
-                pdac[aux].ed_pa();
+                pdac[aux].ed_pa(1);
                 break;
             case 11://Remover uma Produção Academica
                 System.out.println("Informe a identificação da produção academica que você deseja remover: ");
@@ -150,7 +148,15 @@ public class SistemaProdutividadeAcademica {
             }else if(opcao >= 5 && opcao <= 8){
                 ConsultaProjeto(opcao);
             }else if(opcao >= 9 && opcao <= 12){
-                ConsultaProducaoAcademica(opcao);
+                System.out.println("Informe se a produção academica é uma publicação: (1)sim ou (0)não");
+                aux = input.nextInt();
+                if(aux == 1){
+                    ProducaoAcademica pbl[] = new Publicacao[5];
+                    ConsultaProducaoAcademica(opcao, pbl, 5);
+                }else{
+                    ProducaoAcademica ort[] = new Orientacao[5];
+                    ConsultaProducaoAcademica(opcao, ort, 5);
+                }   
             }else if(opcao == 13){
                 System.out.println("Obrigado por Utilizar nosso Sistema de Gerenciamento"
                             + "de Produtividade Academica");

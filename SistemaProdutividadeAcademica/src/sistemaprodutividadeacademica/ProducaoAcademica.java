@@ -2,13 +2,6 @@ package sistemaprodutividadeacademica;
 
 import java.util.Scanner;
 
-/*Falta:
-//Publicação
-     
-//Orientação
-    
-*/
-
 public class ProducaoAcademica {
     
     private int id;
@@ -62,6 +55,21 @@ public class ProducaoAcademica {
         }
     }
     
+    public boolean checaProjeto(String pra){//Fução de apoio para add_pa e ed_pa sobre projeto associado
+        
+        Projeto pjt[] = new Projeto[3];
+        int i = 0;
+        while(i < 3){
+            if(pra.equals(pjt[i].getTitulo())){
+                if(pjt[i].getStatus().equals("Em elaboração")){
+                    return true;
+                }
+            }
+            i++;
+        }
+        return false;
+    }
+    
     public void add_pa(int ficha){//Adição de uma produção academica
         
         int aux1;
@@ -75,10 +83,18 @@ public class ProducaoAcademica {
         aux1 = input.nextInt();
         setAnoEvento(aux1);
         input.nextLine();
-        System.out.println("Informe o Projeto Associado: ");
-        aux2 = input.nextLine();
-        setProjetoAssociado(aux2);
-        System.out.println();
+        while(true){
+            System.out.println("Informe o Projeto Associado: ");
+            aux2 = input.nextLine();
+            if(checaProjeto(aux2)){
+                setProjetoAssociado(aux2);
+                System.out.println();
+                break;
+            }else{
+                System.out.println("Projeto não esta em andamento.");
+                System.out.println("Por favor escolha outro projeto.");
+            }
+        }
     }
     
     public void rem_pa(){//Remoção de uma produção academica
@@ -97,49 +113,42 @@ public class ProducaoAcademica {
         System.out.println("Informe o campo que deseja alterar:");
         System.out.println("Titulo(1);\n"
                 + "Ano do Evento(2);\n"
-                + "Projeto Associado(3);\n"
-                + "Sair(4).");
+                + "Projeto Associado(3);\n");
     }
     
-    public void ed_pa(){//Alterar detalhes de uma produção academica
+    public void ed_pa(int opcao){//Alterar detalhes de uma produção academica
         
-        int opcao = 1;
         int aux1;
         String aux2;
         
-        while(opcao != 4){
-            
-            M_Inicial();
-            opcao = input.nextInt();
-            switch(opcao){
-                case 1:
-                    System.out.println("Informe o Novo Titulo: ");
-                    aux2 = input.nextLine();
-                    setTitulo(aux2);
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println("Informe o Novo Ano do Evento: ");
-                    aux1 = input.nextInt();
-                    setAnoEvento(aux1);
-                    input.nextLine();
-                    System.out.println();
-                    break;
-                case 3:
+        switch(opcao){
+            case 1:
+                System.out.println("Informe o Novo Titulo: ");
+                aux2 = input.nextLine();
+                setTitulo(aux2);
+                System.out.println();
+                break;
+            case 2:
+                System.out.println("Informe o Novo Ano do Evento: ");
+                aux1 = input.nextInt();
+                setAnoEvento(aux1);
+                input.nextLine();
+                System.out.println();
+                break;
+            case 3:
+                while(true){
                     System.out.println("Informe o Novo Projeto Associado: ");
                     aux2 = input.nextLine();
-                    setProjetoAssociado(aux2);
-                    System.out.println();
-                    break;
-                case 4:
-                    System.out.println("Modificações Salvas!!");
-                    System.out.println();
-                    break;
-                default:
-                    System.out.println("Opção Invalida!!!");
-                    System.out.println("Digite Novamente");
-                    System.out.println();
-            }
+                    if(checaProjeto(aux2)){
+                        setProjetoAssociado(aux2);
+                        System.out.println();
+                        break;
+                    }else{
+                        System.out.println("Projeto não esta em andamento.");
+                        System.out.println("Por favor escolha outro projeto.");
+                    }
+                }
+                break;
         }
     }
 }
