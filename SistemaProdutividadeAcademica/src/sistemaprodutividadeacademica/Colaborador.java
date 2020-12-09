@@ -11,8 +11,8 @@ public class Colaborador {
     private String nome;
     private String email;
     private String endereco;
-    private int telefone;
-    private int cpf;
+    private long telefone;
+    private long cpf;
     private int id;
     
     Scanner input = new Scanner(System.in);
@@ -49,19 +49,19 @@ public class Colaborador {
         return endereco;
     }
     
-    public void setTelefone(int telefone){
+    public void setTelefone(long telefone){
         this.telefone = telefone;
     }
     
-    public int getTelefone(){
+    public long getTelefone(){
         return telefone;
     }
     
-    public void setCpf(int cpf){
+    public void setCpf(long cpf){
         this.cpf = cpf;
     }
     
-    public int getCpf(){
+    public long getCpf(){
         return cpf;
     }
     
@@ -81,7 +81,7 @@ public class Colaborador {
     
     public void add_c(int ficha){//Adição de um colaborador
         
-        int aux1;
+        long aux1;
         String aux2;
         
         setId(ficha);
@@ -92,11 +92,11 @@ public class Colaborador {
         aux2 = input.nextLine();
         setEmail(aux2);
         System.out.println("Informe o Telefone(somente numeros): ");
-        aux1 = input.nextInt();
+        aux1 = input.nextLong();
         setTelefone(aux1);
         input.nextLine();
         System.out.println("Informe o CPF(somente numeros): ");
-        aux1 = input.nextInt();
+        aux1 = input.nextLong();
         setCpf(aux1);
         input.nextLine();
         System.out.println("Informe o Endereço: ");
@@ -124,12 +124,12 @@ public class Colaborador {
                 + "Email(2);\n"
                 + "Telefone(3);\n"
                 + "CPF(4);\n"
-                + "Endereço(5);\n");
+                + "Endereço(5);");
     }
     
     public void ed_c(int opcao){//Alterar detalhes de um colaborador
         
-        int aux1;
+        long aux1;
         String aux2;
         
         switch(opcao){
@@ -147,14 +147,14 @@ public class Colaborador {
                 break;
             case 3:
                 System.out.println("Informe o Novo Telefone: ");
-                aux1 = input.nextInt();
+                aux1 = input.nextLong();
                 setTelefone(aux1);
                 input.nextLine();
                 System.out.println();
                 break;
             case 4:
                 System.out.println("Informe o Novo CPF: ");
-                aux1 = input.nextInt();
+                aux1 = input.nextLong();
                 setCpf(aux1);
                 input.nextLine();
                 System.out.println();

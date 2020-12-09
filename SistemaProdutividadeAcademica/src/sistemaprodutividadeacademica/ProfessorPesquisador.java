@@ -21,7 +21,7 @@ public class ProfessorPesquisador extends Colaborador{
         return idProfissional;
     }
     
-        @Override
+    @Override
     public void imp_c(){//Imprimir os dados de um colaborador
         
         if(super.getId() != -1){
@@ -34,7 +34,8 @@ public class ProfessorPesquisador extends Colaborador{
             System.out.println("Identificação Profissional: " + getIdProfissional());
         }else{
             System.out.println("Funcionario não existente");
-        }  
+        }
+        System.out.println();
     }
     
     @Override

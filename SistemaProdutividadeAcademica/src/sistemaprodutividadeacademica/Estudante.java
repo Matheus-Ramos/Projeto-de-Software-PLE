@@ -35,8 +35,9 @@ public class Estudante extends Colaborador{
             }
             System.out.println("Matricula: " + getMatricula());
         }else{
-            System.out.println("Funcionario não existente");
+            System.out.println("Aluno não existente");
         }  
+        System.out.println();
     }
     
     @Override

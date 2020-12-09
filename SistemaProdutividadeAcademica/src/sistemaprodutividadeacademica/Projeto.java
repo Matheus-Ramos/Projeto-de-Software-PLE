@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /*falta:
-* formataçoes de estetica em imp_c;
+* olhar setparticipantes(java.lang.ArrayIndexOutOfBoundsException: 6)
+* olhar rem_p(java.lang.ArrayIndexOutOfBoundsException: 6)(especificamente: setparticipantes)
+* formataçoes de estetica em imp_p;
 */
 
 public class Projeto {
@@ -130,12 +132,14 @@ public class Projeto {
             int i = 0;
             System.out.println("Colaboradore: ");
             while(i<6){
-                System.out.println("Nome: " + getParticipantes(i) + "Identificação: " + getId_participantes(i));
+                if(getParticipantes(i) != null)
+                System.out.println("Nome: " + getParticipantes(i) + " Identificação: " + getId_participantes(i));
                 i++;
             }
         }else{
             System.out.println("Projeto não existente");
         }
+        System.out.println();
     }
     
     public boolean diferencaDatas(LocalDate data1, LocalDate data2){//calcula difereça de datas
@@ -186,8 +190,11 @@ public class Projeto {
         System.out.println("Informe a Descrição: ");
         aux2 = input.nextLine();
         setDescricao(aux2);
-        do{
-        }while(datas());
+        while(true){
+            if(datas()){
+                break;
+            }
+        }
         System.out.println("Informe a Agencia Financiadora: ");
         aux2 = input.nextLine();
         setAgenciaFinanciadora(aux2);
@@ -288,9 +295,10 @@ public class Projeto {
         }
     }
     
-    public boolean checaProducaoAcademica(){
+    public boolean checaProducaoAcademica(){/*função de apoio para gerenciarStatus() 
+        sobre projeto associado de uma publicação*/
         
-        ProducaoAcademica pbc[] = new Publicacao[5];
+        ProducaoAcademica[] pbc = new Publicacao[5];
         int i = 0;
         while(i < 5){
             if(getTitulo().equals(pbc[i].getProjetoAssociado())){
@@ -344,7 +352,7 @@ public class Projeto {
     public int ed_par_aux(){//Função auxiliar de ed_par
         
         int i;
-        System.out.println("Informe o Numero de Colaboradores: ");
+        System.out.println("Informe o Numero do Colaborador: ");
         i = input.nextInt();
         input.nextLine();
         if(i == 0){
@@ -384,6 +392,7 @@ public class Projeto {
                 aux2 = input.nextLine();
                 aux1 =  getId_participantes(i);
                 setParticipantes(aux2, aux1, i);
+                break;
             }else if(opcao == 3){
                 i = ed_par_aux();
                 System.out.println("Informe o Novo Numero da Identificação(somente numeros): ");
@@ -391,6 +400,7 @@ public class Projeto {
                 aux2 = getParticipantes(i);
                 setParticipantes(aux2, aux1, i);
                 input.nextLine();
+                break;
             }else{
                 System.out.println("Opção Invalida.");
             }    

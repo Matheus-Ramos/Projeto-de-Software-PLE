@@ -3,13 +3,15 @@ package sistemaprodutividadeacademica;
 import java.util.Scanner;
 
 /*falta:
-* ajeitar a escrita nos arrays;
-* editar chamadas referentes a colaborador;
 */
 
 public class SistemaProdutividadeAcademica {
     
     static int i, j, k, aux;
+    
+    static Colaborador[] clb = new Colaborador[5];
+    static ProducaoAcademica[] pdac = new ProducaoAcademica[5];
+    static Projeto[] pjto = new Projeto[3];
     
     static Scanner input = new Scanner(System.in);
     
@@ -31,7 +33,7 @@ public class SistemaProdutividadeAcademica {
                 + "Sair(13).");
     }
     
-    public static void ConsultaColaborador(int opcao, Colaborador clb[], int tam) {//função para manipular a classe colaborador e suas subclasses
+    public static void ConsultaColaborador(int opcao, Colaborador[] clb){//função para manipular a classe colaborador e suas subclasses
         
         switch(opcao){
             case 1://Adicionar um Colaborador
@@ -58,17 +60,16 @@ public class SistemaProdutividadeAcademica {
                 input.nextLine();
                 clb[aux].imp_c();
                 break;
-        }
-        
+        }  
     }
         
-    public static void ConsultaProjeto(int opcao) {//função para manipular a classe projeto e suas subclasses
+    public static void ConsultaProjeto(int opcao) {//função para manipular a classe projeto
     
-        Projeto pjt[] = new Projeto[3];
-        
+        pjto[j] = new Projeto();
+
         switch(opcao){
             case 5://Adicionar um Projeto
-                pjt[j].add_p(j);
+                pjto[j].add_p(j);
                 j++;
                 break;
             case 6://Alterar Detalhes de um Projeto
@@ -76,25 +77,25 @@ public class SistemaProdutividadeAcademica {
                             + "alterar os dados: ");
                 aux = input.nextInt();
                 input.nextLine();
-                pjt[aux].ed_p();
+                pjto[aux].ed_p();
                 break;
             case 7://Remover um Projeto
                 System.out.println("Informe a identificação do projeto que você deseja remover: ");
                 aux = input.nextInt();
                 input.nextLine();
-                pjt[aux].rem_p();
+                pjto[aux].rem_p();
                 break;
             case 8://Imprimir Dados de um Projeto
                 System.out.println("Informe a identificação do projeto que você deseja "
                             + "visualizar os dados: ");
                 aux = input.nextInt();
                 input.nextLine();
-                pjt[aux].imp_p();
+                pjto[aux].imp_p();
                 break;
         }
     }
     
-    public static void ConsultaProducaoAcademica(int opcao, ProducaoAcademica pdac[], int tam) {//função para manipular a classe ProducaoAcademica e suas subclasses
+    public static void ConsultaProducaoAcademica(int opcao, ProducaoAcademica[] pdac) {//função para manipular a classe ProducaoAcademica e suas subclasses
         
         switch(opcao){
             case 9://Adicionar uma Produção Academica
@@ -126,10 +127,16 @@ public class SistemaProdutividadeAcademica {
          
     public static void main(String[] args) {
         
+        Colaborador[] est = new Estudante[5];
+        Colaborador[] pfpq = new ProfessorPesquisador[5];
+        ProducaoAcademica[] pbl = new Publicacao[5];
+        ProducaoAcademica[] ort = new Orientacao[5];
+        
         int opcao = 1;
         i = 0;
         j = 0;
         k = 0;
+        
         while(opcao != 13){
             
             M_Inicial();
@@ -139,11 +146,11 @@ public class SistemaProdutividadeAcademica {
                 System.out.println("Informe se o colaborador é um estudante: (1)sim ou (0)não");
                 aux = input.nextInt();
                 if(aux == 1){
-                    Colaborador est[] = new Estudante[5];
-                    ConsultaColaborador(opcao, est, 5);
+                    est[i] = new Estudante();
+                    ConsultaColaborador(opcao, est);
                 }else{
-                    Colaborador pfpq[] = new ProfessorPesquisador[5];
-                    ConsultaColaborador(opcao, pfpq, 5);
+                    pfpq[i] = new ProfessorPesquisador();
+                    ConsultaColaborador(opcao, pfpq);
                 }   
             }else if(opcao >= 5 && opcao <= 8){
                 ConsultaProjeto(opcao);
@@ -151,11 +158,11 @@ public class SistemaProdutividadeAcademica {
                 System.out.println("Informe se a produção academica é uma publicação: (1)sim ou (0)não");
                 aux = input.nextInt();
                 if(aux == 1){
-                    ProducaoAcademica pbl[] = new Publicacao[5];
-                    ConsultaProducaoAcademica(opcao, pbl, 5);
+                    pbl[k] = new Publicacao();
+                    ConsultaProducaoAcademica(opcao, pbl);
                 }else{
-                    ProducaoAcademica ort[] = new Orientacao[5];
-                    ConsultaProducaoAcademica(opcao, ort, 5);
+                    ort[k] = new Orientacao();
+                    ConsultaProducaoAcademica(opcao, ort);
                 }   
             }else if(opcao == 13){
                 System.out.println("Obrigado por Utilizar nosso Sistema de Gerenciamento"
@@ -167,6 +174,5 @@ public class SistemaProdutividadeAcademica {
                 System.out.println();
             }
         } 
-    }
-    
+    }   
 }

@@ -1,5 +1,10 @@
 package sistemaprodutividadeacademica;
 
+/*falta:
+* olhar checaProjeto(java.lang.NullPointerException)
+
+*/
+
 import java.util.Scanner;
 
 public class ProducaoAcademica {
